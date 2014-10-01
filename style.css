@@ -1,0 +1,221 @@
+@font-face {
+	font-family: Tungsten-SB;
+	src: url('fonts/Tungsten-Semibold.otf'),url('fonts/BebasNeue-webfont.eot');
+	font-weight: 900;
+}
+
+
+@font-face {
+	font-family: GothamBook;
+	src: url('fonts/GothamRnd-Book.otf'),url('fonts/gothamrnd-medium.eot');
+}
+
+@font-face {
+	font-family: GothamMed;
+	src: url('fonts/GothamRnd-Medium.otf'),url('fonts/gothamrnd-medium.eot');
+}
+
+@font-face {
+	font-family: Neutraface;
+	src: url('fonts/NeutrafaceSlabDisplay-Thin.otf'),url('fonts/gothamrnd-medium.eot');
+}
+
+
+
+body {
+	background-image: url('img/BG.png');
+	background-repeat: no-repeat;
+	margin: 0px;
+	color: #fff;
+}
+
+#menuBar {
+	width: 1256px;
+	height: 143px;
+	position: fixed;
+	top: 0px;
+	left: 55px;
+}
+
+.scene-button {
+	display: table-cell;
+	width: 157px;
+	height: 143px;
+	background-repeat:no-repeat;
+	background-attachment:relative;
+	background-position:0% 25px;
+}
+
+.button-label {
+	position:relative;
+	width:100%;
+	height:50px;
+	background-color:#3f4b00;
+	line-height:50px;
+	border:1px solid #777;
+	margin-top:93px;
+	text-align:center;
+	color: #777;
+	font-size: 20px;
+	font-family: Tungsten-SB;
+}
+
+#description {
+	width: 450px;
+	height: 520px;
+	position: fixed;
+	top: 220px;
+	left: 50px;
+	padding: 30px;
+}
+
+#controlInfo {
+	width: 550px;
+	height: 520px;
+	position: fixed;
+	top: 220px;
+	left: 720px;
+}
+
+#page {
+	height:60%;
+}
+
+#pageControls {
+	bottom: 500px;
+	width: 100%;
+	height:10%;
+	display: table;
+	
+	text-align: justify;
+	table-layout: fixed;
+    -ms-text-justify: distribute-all-lines;
+    text-justify: distribute-all-lines;
+}
+
+#pageNum {
+	display: table-cell;
+	 vertical-align: middle;
+	font-size: medium;
+	font-family: GothamMed;
+	text-align: center;
+	color: #999;
+}
+
+#next {
+	display: table-cell;
+	vertical-align: middle;
+	float: right;
+}
+#back {
+	display: table-cell;
+	 vertical-align: middle;
+}
+
+#info {
+	min-height:50%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#animLabels {
+	color: #999;
+	font-size: medium;
+	width:82%;
+	margin-left: 20px;
+	text-align: center;
+}
+
+#rotControl {
+	display: inline;
+}
+
+#animControl {
+	display: inline;
+}
+
+.infoText {
+	color: #999;
+	font-size: 16px;
+	text-align: left;
+	font-family: GothamMed;
+}
+
+.infoTitle {
+	color: #999;
+	font-size: 24px;
+	text-align: left;
+	font-family: GothamMed;
+}
+
+#legendLabels {
+	color: #999;
+	font-size: large;
+	width:100%;
+	margin-left: 0px;
+	line-height:300%;
+}
+
+.labelGroup {
+	display: table;
+	table-layout: fixed;
+    -ms-text-justify: distribute-all-lines;
+    text-justify: distribute-all-lines;
+}
+
+.label {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	font-family: GothamMed;
+}
+
+.first_label {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: left;
+	font-family: GothamMed;
+}
+
+.last_label {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: right;
+	font-family: GothamMed;
+}
+
+.slider-title {
+	font-family: GothamMed;
+	color: #BBB;
+	font-size: large;
+}
+
+.description-title {
+	font-family: Neutraface;
+	line-height:100%;
+	color: #BBB;
+	font-size: 35pt;
+	vertical-align:text-top;
+	margin-top: -10px;
+}
+
+.description-para {
+	font-family: GothamMed;
+	line-height:175%;
+	color: #BBB;
+	font-size: 14pt;
+}
+
+.slider-background {
+	float: left;
+	background: url(img/slider-track.png) no-repeat center center;
+	width: 90%;
+	text-align: left;
+	margin: 0 auto;
+	position:relative;
+	display:inline-block;
+}
+
+.slider-handle {
+	position:absolute;
+}

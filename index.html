@@ -1,0 +1,47 @@
+<html>
+<header>
+	<title>Magic Planet Controls</title>
+	<link rel="stylesheet" href="style.css" />
+</header>
+<body>
+	<object width="0" height="0" id="StoryTeller" classid="CLSID:8FDD41D0-E2B6-4160-B553-1F8809DCF6C7" ></object>
+	<div id="menuBar" ></div>
+	<div id="description">
+		<div id="title"></div>
+		<br>
+		<div id="page"></div>
+		<div id="pageControls">
+			<img id="back" src="img/btn_back-inactive.png"></img>
+			<span id="pageNum">1 of 2</span> 
+			<img id="next" src="img/btn_next-active.png"></img>
+		</div>
+	</div>
+	<div id="controlInfo">
+		<div id="infoSpace">
+		</div>
+		<div id="controls">
+			<div id="rotControl"> 
+				<h1 id="rotTitle" class="slider-title">Rotate the globe</h1>
+				<div id="rotSlider" class="slider-background"></div>
+				<img id="rotBtn" src="img/PlayBTN.png"></img>
+			</div>
+			<br>
+			<br>
+			<div id="animControl">
+				<h1 id="animTitle" class="slider-title">Control the animation</h1>
+				<div id="animSlider" class="slider-background"></div>
+				<img id="animBtn" src="img/PlayBTN.png"></img>
+				<br>
+				<div id="animLabels" class="labelGroup"></div>
+			</div>
+		</div>
+	</div>
+</body>
+<footer>
+	<script type="text/javascript" src="src/smm_utils.js"></script>
+	<script type="text/javascript" src="src/mouseFxn.js"></script>
+	<script type="text/javascript" src="src/smm_XMLParse.js"></script>
+	<script type="text/javascript" src="src/smm_slider.js"></script>
+	<script type="text/javascript" src="src/storyTellerControl.js"></script>
+	<script type="text/javascript" src="src/mpScenes.js"></script>
+</footer>

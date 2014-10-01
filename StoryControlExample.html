@@ -1,0 +1,278 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>StoryControl Example</title>
+
+<script LANGUAGE="JavaScript" FOR="Slider1" EVENT="Change">
+//if (navigator.appName.substring(0,9) == "Microsoft") {
+  qty.value = Slider1.value
+  StoryTeller.RotationAngle = Slider1.value
+//}
+</script>
+
+<script LANGUAGE="JavaScript" FOR="Slider1" EVENT="Scroll (source, args)">
+//if (navigator.appName.substring(0,9) == "Microsoft") {
+  qty.value = Slider1.value
+  StoryTeller.RotationAngle = Slider1.value
+//}
+</script>
+
+<script>
+function qtyChange(aqty){
+  if (isNaN(aqty)) {
+    alert("Quantity " + aqty + " is invalid,")
+  }else{
+    //if (navigator.appName.substring(0,9) == "Microsoft") {
+      Slider1.value = aqty;
+    //}
+  }
+}
+
+function sliderChange(){
+	curAngle.innerHTML = Slider1.value;
+	StoryTeller.RotationAngle = Slider1.value;
+}
+</script>
+
+<!-- This script section contains the StoryTeller Control functions -->
+<script>
+
+// This is only required if the StoryTeller software is running on another computer than is the touch-screen page.
+function SetRemoteStoryTeller() {
+
+	StoryTeller.url = "tcp://ComputerName:8080/StoryTeller"
+}
+
+
+// Pause the animation
+function Pause() {
+
+	StoryTeller.Pause
+}
+
+// Play the animation at 30 fps
+function PlayFast() {
+
+	StoryTeller.FrameRate = 30
+	StoryTeller.Play
+}
+
+// Play the animation at 15 fps
+function PlaySlow() {
+
+	StoryTeller.FrameRate = 15
+	StoryTeller.Play
+}
+
+// Rotate the display at 6 rpm
+function RotateFast() {
+
+	StoryTeller.RotationRate = 6
+	StoryTeller.Rotating = true
+}
+
+// Rotate the display at 2 rpm
+function RotateSlow() {
+
+	StoryTeller.RotationRate = 2
+	StoryTeller.Rotating = true
+}
+
+// Stop the rotation
+function RotateStop() {
+
+	StoryTeller.Rotating = false
+}
+
+// Set rotating direction to clockwise and turn on rotating
+function RotateClockwise() {
+
+	StoryTeller.RotateClockwise = true
+	StoryTeller.Rotating = true
+}
+
+// Set rotating direction to counterclockwise and turn on rotating
+function RotateCounterClockwise() {
+
+	StoryTeller.RotateClockwise = false
+	StoryTeller.Rotating = true
+}
+
+// Flip the Poles
+function Flip() {
+	if (StoryTeller.FlipPoles == true)
+		StoryTeller.FlipPoles = false
+	else
+		StoryTeller.FlipPoles = true
+}
+
+// Checks to see if the poles are flipped,
+// if so unflip the poles
+function CheckFlip() {
+	if ( StoryTeller.FlipPoles == true )
+		StoryTeller.FlipPoles = false
+}
+
+// Change to the specified chapter and page
+// Both chapter and page can be passed as an argument
+// Example: function TurnToPage(chapter, page) {
+//              StoryTeller.ChapterAndPageNames(chapter, page)
+//          }
+function TurnToPage(page) {
+
+	StoryTeller.ChapterAndPageNames("1 - Earth's Dynamic Systems", page)
+}
+
+// Change to the previous page in the chapter
+function PreviousPage() {
+
+	StoryTeller.PreviousPage()
+}
+
+// Change to the next page in the chapter
+function NextPage() {
+
+	StoryTeller.NextPage()
+}
+</script>
+
+<!-- Push Button Callbacks -->
+<script language="JavaScript">
+
+function FP_preloadImgs() {//v1.0
+	var d=document,a=arguments; if(!d.FP_imgs) d.FP_imgs=new Array();
+	for(var i=0; i<a.length; i++) { d.FP_imgs[i]=new Image; d.FP_imgs[i].src=a[i]; }
+}
+
+function FP_swapImg() {//v1.0
+	var doc=document,args=arguments,elm,n; doc.$imgSwaps=new Array(); for(n=2; n<args.length;
+	n+=2) { elm=FP_getObjectByID(args[n]); if(elm) { doc.$imgSwaps[doc.$imgSwaps.length]=elm;
+	elm.$src=elm.src; elm.src=args[n+1]; } }
+}
+
+function FP_getObjectByID(id,o) {//v1.0
+	var c,el,els,f,m,n; if(!o)o=document; if(o.getElementById) el=o.getElementById(id);
+	else if(o.layers) c=o.layers; else if(o.all) el=o.all[id]; if(el) return el;
+	if(o.id==id || o.name==id) return o; if(o.childNodes) c=o.childNodes; if(c)
+	for(n=0; n<c.length; n++) { el=FP_getObjectByID(id,c[n]); if(el) return el; }
+	f=o.forms; if(f) for(n=0; n<f.length; n++) { els=f[n].elements;
+	for(m=0; m<els.length; m++){ el=FP_getObjectByID(id,els[n]); if(el) return el; } }
+	return null;
+}
+
+</script>
+
+<link rel="stylesheet" type="text/css" href="../normal.css">
+
+</head>
+
+<!-- Onload, change the rotation direction and check the poles. We could turn the page here too. -->
+<body bgcolor="black" onload="RotateClockwise();CheckFlip();FP_preloadImgs(/*url*/'Images/Buttons/button119.jpg', /*url*/'Images/Buttons/button11A.jpg', /*url*/'Images/Buttons/button11C.jpg', /*url*/'Images/Buttons/button11D.jpg', /*url*/'button148.jpg', /*url*/'button149.jpg', /*url*/'button14B.jpg', /*url*/'button14C.jpg', /*url*/'Images/Buttons/button14B.jpg', /*url*/'Images/Buttons/button14C.jpg')">
+
+<!-- Required for connecting to the StoryTeller object - StoryTeller must be running first, before starting the web page -->
+<object width="0" height="0" id="StoryTeller" classid="CLSID:8FDD41D0-E2B6-4160-B553-1F8809DCF6C7" ></object>
+
+<form name="form1">
+	<table cellSpacing="0" cellPadding="0" width="100%">
+		<tr>
+			<td>
+			<a target="_blank" href="http://www.globalimagination.com">
+			<img height="79" width="91" src="Images/Global_Imagination_Logo.jpg" border="0"></a></td>
+			<td width="100%"><font size="6" color="white">&nbsp; Global Imagination</font><font size="6" color="white"><sup>®</sup>&nbsp;StoryControl Example</font></td>
+		</tr>
+	</table>
+	
+	<br><br>
+
+	<table cellpadding="5" width="100%" border="1">
+		<tr>
+			<td><font color="white"><b>Example Functionality:</b></font></td>
+			<td><font color="white"><b>Sample Interface:</b></font></td>
+			<td><font color="white"><b>StoryTeller Control:</b></font></td>
+		</tr>
+		<tr>
+			<td><font color="white">Animation Buttons</font></td>        
+			<td>
+				<img border="0" id="img11" src="Images/Buttons/button10A.jpg" height="25" width="125" alt="Play Fast" onmouseover="FP_swapImg(1,0,/*id*/'img11',/*url*/'Images/Buttons/button10B.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img11',/*url*/'Images/Buttons/button10A.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img11',/*url*/'Images/Buttons/button10C.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img11',/*url*/'Images/Buttons/button10B.jpg');PlayFast()" fp-style="fp-btn: Embossed Rectangle 9; fp-font: Times New Roman; fp-font-style: Bold; fp-font-size: 12" fp-title="Play Fast">
+				<img border="0" id="img12" src="Images/Buttons/button10D.jpg" height="25" width="125" alt="Play Slow" onmouseover="FP_swapImg(1,0,/*id*/'img12',/*url*/'Images/Buttons/button10E.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img12',/*url*/'Images/Buttons/button10D.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img12',/*url*/'Images/Buttons/button10F.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img12',/*url*/'Images/Buttons/button10E.jpg');PlaySlow()" fp-style="fp-btn: Embossed Rectangle 9; fp-font: Times New Roman; fp-font-style: Bold; fp-font-size: 12" fp-title="Play Slow">
+				<img border="0" id="img13" src="Images/Buttons/button110.jpg" height="25" width="125" alt="Pause" onmouseover="FP_swapImg(1,0,/*id*/'img13',/*url*/'Images/Buttons/button111.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img13',/*url*/'Images/Buttons/button110.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img13',/*url*/'Images/Buttons/button112.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img13',/*url*/'Images/Buttons/button111.jpg');Pause()" fp-style="fp-btn: Embossed Rectangle 9; fp-font: Times New Roman; fp-font-style: Bold; fp-font-size: 12" fp-title="Pause">
+
+			</td>
+			<td><font color="white">StoryTeller.FrameRate<br>StoryTeller.Play<br>StoryTeller.Pause</font></td>
+		</tr>
+		<tr>
+			<td><font color="white">Rotation Buttons</font></td>        
+			<td>
+				<img border="0" id="img15" src="Images/Buttons/button116.jpg" height="25" width="125" alt="Spin Fast" onmouseover="FP_swapImg(1,0,/*id*/'img15',/*url*/'Images/Buttons/button117.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img15',/*url*/'Images/Buttons/button116.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img15',/*url*/'Images/Buttons/button118.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img15',/*url*/'Images/Buttons/button117.jpg');RotateFast()" fp-style="fp-btn: Embossed Rectangle 9; fp-font: Times New Roman; fp-font-style: Bold; fp-font-size: 12" fp-title="Spin Fast">
+				<img border="0" id="img16" src="Images/Buttons/button119.jpg" height="25" width="125" alt="Spin Slow" onmouseover="FP_swapImg(1,0,/*id*/'img16',/*url*/'Images/Buttons/button11A.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img16',/*url*/'Images/Buttons/button119.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img16',/*url*/'Images/Buttons/button11B.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img16',/*url*/'Images/Buttons/button11A.jpg');RotateSlow()" fp-style="fp-btn: Embossed Rectangle 9; fp-font: Times New Roman; fp-font-style: Bold; fp-font-size: 12" fp-title="Spin Slow">
+				<img border="0" id="img17" src="Images/Buttons/button11C.jpg" height="25" width="125" alt="Stop" onmouseover="FP_swapImg(1,0,/*id*/'img17',/*url*/'Images/Buttons/button11D.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img17',/*url*/'Images/Buttons/button11C.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img17',/*url*/'Images/Buttons/button11E.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img17',/*url*/'Images/Buttons/button11D.jpg');RotateStop()" fp-style="fp-btn: Embossed Rectangle 9; fp-font: Times New Roman; fp-font-style: Bold; fp-font-size: 12" fp-title="Stop">
+
+			</td>
+			<td><font color="white">StoryTeller.RotationRate<br>StoryTeller.Rotate</font></td>
+		</tr>
+		<tr>
+			<td><font color="white">Rotation Slider</font></td> 
+			<td>
+				<table border="0" cellspacing="0" class="small" cellpadding="5">
+					<tr>
+						<td colspan="2">
+							<input classid="clsid:F08DF954-8592-11D1-B16A-00C0F0283628" id="Slider1" type="range" min="0" max="100" value="50" width="180" height="32" onchange="sliderChange()">
+								
+							</input>
+						</td>
+					</tr>
+					<tr>
+						<td><font color="white">Current Rotation Angle:<div id="curAngle">30</div></font>
+							
+					</tr>
+				</table>
+			</td>
+		
+			<td><font color="white">StoryTeller.RotationAngle</font></td>
+
+		</tr>
+		<tr>
+			<td><font color="white">Change Rotation Direction</font></td>        
+			<td>
+			<input type="radio" value="V1" checked name="R1" onclick="RotateClockwise()"><font color="white">Clockwise</font>
+			<input type="radio" name="R1" value="V2" onclick="RotateCounterClockwise()"><font color="white">Counterclockwise</font></td>
+			<td><font color="white">StoryTeller.RotateClockwise<br>StoryTeller.Rotating</font></td>
+		</tr>
+		<tr>
+			<td><font color="white">Flip the Poles</font></td>        
+			<td>
+				<img border="0" id="img14" src="Images/Buttons/button113.jpg" height="25" width="125" alt="Flip the Poles" onmouseover="FP_swapImg(1,0,/*id*/'img14',/*url*/'Images/Buttons/button114.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img14',/*url*/'Images/Buttons/button113.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img14',/*url*/'Images/Buttons/button115.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img14',/*url*/'Images/Buttons/button114.jpg');Flip()" fp-style="fp-btn: Embossed Rectangle 9; fp-font: Times New Roman; fp-font-style: Bold; fp-font-size: 12" fp-title="Flip the Poles">
+			</td>
+			<td><font color="white">StoryTeller.FlipPoles</font></td>
+		</tr>
+		<tr>
+			<td><font color="white">Turn to Page Buttons</font></td>        
+			<td>
+			<img border="0" id="img18" src="Images/Buttons/button147.jpg" height="30" width="150" alt="Clouds On the Marble" onmouseover="FP_swapImg(1,0,/*id*/'img18',/*url*/'Images/Buttons/button148.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img18',/*url*/'Images/Buttons/button147.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img18',/*url*/'Images/Buttons/button149.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img18',/*url*/'Images/Buttons/button148.jpg');TurnToPage('Big Blue Marble')" fp-style="fp-btn: Metal Capsule 1; fp-font: Times New Roman; fp-font-style: Bold; fp-bgcolor: #000000" fp-title="Clouds On the Marble">
+			<img border="0" id="img19" src="Images/Buttons/button14A.jpg" height="30" width="150" alt="El Nino" onmouseover="FP_swapImg(1,0,/*id*/'img19',/*url*/'Images/Buttons/button14B.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img19',/*url*/'Images/Buttons/button14A.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img19',/*url*/'Images/Buttons/button14C.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img19',/*url*/'Images/Buttons/button14B.jpg');TurnToPage('El Nino')" fp-style="fp-btn: Metal Capsule 4; fp-font: Times New Roman; fp-font-style: Bold; fp-bgcolor: #000000" fp-title="El Nino"></td>
+			<td><font color="white">StoryTeller.ChapterAndPageNames</font></td>
+		</tr>
+		<tr>
+			<td><font color="white">Turn to Page Buttons</font></td>        
+			<td>
+				<table>
+					<tr>
+						<td><img border="0" src="Images/Previous%20Playlist%20Button.jpg" width="26" height="17" onmouseup="PreviousPage()"></td>
+						<td><font color="white">Previous Page</font></td>
+					</tr>
+					<tr>
+						<td><img border="0" src="Images/Next%20Playlist%20Button.jpg" width="26" height="17" onmouseup="NextPage()"></td>
+						<td><font color="white">Next Page</font></td>
+					</tr>
+				</table>
+			<td><font color="white">StoryTeller.PreviousPage<br>StoryTeller.NextPage</font></td>
+		</tr>
+	</table>
+</form>
+</body>
+
+</html>
