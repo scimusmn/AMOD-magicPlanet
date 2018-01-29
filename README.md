@@ -1,4 +1,4 @@
-#AMOD-magicPlanet#
+AMOD-magicPlanet
 ================
 
 **Touchscreen Interface for the Magic Planet for AMOD**
